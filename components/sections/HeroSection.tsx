@@ -135,14 +135,14 @@ export function HeroSection() {
               >
                 Rozpocznij darmową analizę <ArrowRight size={16} />
               </Link>
-              <Link
-                href="/wiedza"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold"
+              <button
+                onClick={() => document.getElementById("jak-to-dziala")?.scrollIntoView({ behavior: "smooth" })}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold cursor-pointer"
                 style={{ border: "2px solid white", color: "white", backgroundColor: "rgba(255,255,255,0.12)" }}
               >
                 <Play size={14} className="fill-white" />
                 Zobacz jak to działa
-              </Link>
+              </button>
             </motion.div>
 
             {/* Kroki */}

@@ -10,7 +10,7 @@ const steps = [
 
 export function HowSection() {
   return (
-    <section className="py-24 bg-[#0B1F3A] relative overflow-hidden">
+    <section id="jak-to-dziala" className="py-24 bg-[#0B1F3A] relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
         <svg width="100%" height="100%">
           <defs>
