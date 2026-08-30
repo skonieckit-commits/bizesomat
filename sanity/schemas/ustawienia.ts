@@ -1,0 +1,33 @@
+import { defineField, defineType } from "sanity";
+
+export const ustawienia = defineType({
+  name: "ustawienia",
+  title: "Ustawienia strony",
+  type: "document",
+  fields: [
+    defineField({ name: "heroNaglowek", title: "Hero: Nagłówek", type: "string" }),
+    defineField({ name: "heroOpis", title: "Hero: Opis", type: "text", rows: 3 }),
+    defineField({ name: "heroCtaGlowny", title: "Hero: Tekst przycisku głównego", type: "string" }),
+    defineField({ name: "zyskNetto", title: "Panel ROI: Zysk netto (zł/mies)", type: "number" }),
+    defineField({ name: "roi", title: "Panel ROI: ROI (miesięcy)", type: "number" }),
+    defineField({ name: "irr", title: "Panel ROI: IRR (%)", type: "number" }),
+    defineField({ name: "marzaNetto", title: "Panel ROI: Marża netto (%)", type: "number" }),
+    defineField({ name: "inwestycjaPoczatkowa", title: "Kalkulator: Inwestycja początkowa (zł)", type: "number" }),
+    defineField({ name: "stat1Liczba", title: "Statystyka 1: Liczba", type: "string" }),
+    defineField({ name: "stat1Opis", title: "Statystyka 1: Opis", type: "string" }),
+    defineField({ name: "stat2Liczba", title: "Statystyka 2: Liczba", type: "string" }),
+    defineField({ name: "stat2Opis", title: "Statystyka 2: Opis", type: "string" }),
+    defineField({ name: "stat3Liczba", title: "Statystyka 3: Liczba", type: "string" }),
+    defineField({ name: "stat3Opis", title: "Statystyka 3: Opis", type: "string" }),
+    defineField({ name: "stat4Liczba", title: "Statystyka 4: Liczba", type: "string" }),
+    defineField({ name: "stat4Opis", title: "Statystyka 4: Opis", type: "string" }),
+    defineField({ name: "stat5Liczba", title: "Statystyka 5: Liczba", type: "string" }),
+    defineField({ name: "stat5Opis", title: "Statystyka 5: Opis", type: "string" }),
+    defineField({ name: "stat6Liczba", title: "Statystyka 6: Liczba", type: "string" }),
+    defineField({ name: "stat6Opis", title: "Statystyka 6: Opis", type: "string" }),
+    defineField({ name: "telefonKontaktowy", title: "Telefon kontaktowy", type: "string" }),
+    defineField({ name: "email", title: "Email", type: "string" }),
+    defineField({ name: "instagram", title: "Instagram (@)", type: "string" }),
+  ],
+  preview: { prepare: () => ({ title: "Ustawienia strony głównej" }) },
+});
