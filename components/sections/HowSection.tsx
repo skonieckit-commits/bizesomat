@@ -66,10 +66,10 @@ export function HowSection() {
               transition={{ delay: 0.2 + i * 0.15, duration: 0.6, ease: "easeOut" }}
               className="relative z-10 group"
             >
-              <div
-                className="bg-[#C9A84C] border border-[#C9A84C] rounded-2xl p-7 transition-all duration-300 hover:bg-[#DFC070]"
-                onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 0 40px 0 rgba(201,168,76,0.5)")}
-                onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
+              <motion.div
+                className="bg-[#C9A84C] border border-[#C9A84C] rounded-2xl p-7 transition-colors duration-300 hover:bg-[#DFC070]"
+                animate={inView ? { boxShadow: ["0 0 0px 0px rgba(201,168,76,0)", "0 0 32px 8px rgba(201,168,76,0.35)", "0 0 0px 0px rgba(201,168,76,0)"] } : {}}
+                transition={{ delay: 0.5 + i * 0.15, duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               >
                 {/* Numer z pulsującym blaskiem */}
                 <div className="relative mb-4 w-fit">
@@ -84,7 +84,7 @@ export function HowSection() {
 
                 <h3 className="text-[#0B1F3A] font-bold text-lg mb-2">{title}</h3>
                 <p className="text-[#0B1F3A]/70 text-sm leading-relaxed">{desc}</p>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
