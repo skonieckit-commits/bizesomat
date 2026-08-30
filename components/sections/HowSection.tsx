@@ -67,23 +67,23 @@ export function HowSection() {
               className="relative z-10 group"
             >
               <div
-                className="bg-white/5 border border-white/10 rounded-2xl p-7 transition-all duration-300 hover:border-[#C9A84C]/50 hover:bg-white/[0.08]"
-                onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 0 40px 0 rgba(201,168,76,0.18)")}
+                className="bg-[#C9A84C] border border-[#C9A84C] rounded-2xl p-7 transition-all duration-300 hover:bg-[#DFC070]"
+                onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 0 40px 0 rgba(201,168,76,0.5)")}
                 onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
               >
                 {/* Numer z pulsującym blaskiem */}
                 <div className="relative mb-4 w-fit">
                   <motion.div
-                    animate={inView ? { opacity: [0, 0.5, 0.2] } : { opacity: 0 }}
+                    animate={inView ? { opacity: [0, 0.4, 0.15] } : { opacity: 0 }}
                     transition={{ delay: 0.6 + i * 0.15, duration: 2, repeat: Infinity, repeatType: "reverse" }}
                     className="absolute inset-0 blur-2xl rounded-full"
-                    style={{ background: "#C9A84C", transform: "scale(2)" }}
+                    style={{ background: "white", transform: "scale(2)" }}
                   />
-                  <div className="relative text-[#C9A84C] font-bold text-4xl font-serif">{n}</div>
+                  <div className="relative text-white font-bold text-4xl font-serif">{n}</div>
                 </div>
 
-                <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-[#0B1F3A] font-bold text-lg mb-2">{title}</h3>
+                <p className="text-[#0B1F3A]/70 text-sm leading-relaxed">{desc}</p>
               </div>
             </motion.div>
           ))}
