@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const steps = [
   { n: "01", title: "Rozmowa i analiza", desc: "Opowiadasz nam o pomyśle, lokalizacji i budżecie. Analizujemy potencjał razem." },
@@ -9,6 +10,9 @@ const steps = [
 ];
 
 export function HowSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section id="jak-to-dziala" className="py-24 bg-[#0B1F3A] relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]">
@@ -21,7 +25,8 @@ export function HowSection() {
           <rect width="100%" height="100%" fill="url(#dots)" />
         </svg>
       </div>
-      <div className="container relative">
+
+      <div className="container relative" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,21 +41,47 @@ export function HowSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* Animowana linia łącząca kroki (tylko desktop) */}
+          <div className="hidden lg:block absolute top-[3.5rem] left-0 right-0 z-0 px-[12.5%]">
+            <svg width="100%" height="2" className="overflow-visible">
+              <motion.line
+                x1="0" y1="1" x2="100%" y2="1"
+                stroke="#C9A84C"
+                strokeWidth="1.5"
+                strokeDasharray="6 4"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={inView ? { pathLength: 1, opacity: 0.4 } : {}}
+                transition={{ duration: 1.4, delay: 0.2, ease: "easeInOut" }}
+              />
+            </svg>
+          </div>
+
           {steps.map(({ n, title, desc }, i) => (
             <motion.div
               key={n}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="relative"
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ delay: 0.2 + i * 0.15, duration: 0.6, ease: "easeOut" }}
+              className="relative z-10 group"
             >
-              {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-white/10 -translate-y-0.5 z-0" style={{ width: "calc(100% - 2rem)", left: "calc(100% + 0rem)" }} />
-              )}
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/8 transition-colors">
-                <div className="text-[#C9A84C] font-bold text-4xl font-serif mb-4">{n}</div>
+              <div
+                className="bg-white/5 border border-white/10 rounded-2xl p-7 transition-all duration-300 hover:border-[#C9A84C]/50 hover:bg-white/[0.08]"
+                onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 0 40px 0 rgba(201,168,76,0.18)")}
+                onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
+              >
+                {/* Numer z pulsującym blaskiem */}
+                <div className="relative mb-4 w-fit">
+                  <motion.div
+                    animate={inView ? { opacity: [0, 0.5, 0.2] } : { opacity: 0 }}
+                    transition={{ delay: 0.6 + i * 0.15, duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                    className="absolute inset-0 blur-2xl rounded-full"
+                    style={{ background: "#C9A84C", transform: "scale(2)" }}
+                  />
+                  <div className="relative text-[#C9A84C] font-bold text-4xl font-serif">{n}</div>
+                </div>
+
                 <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
                 <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
               </div>
