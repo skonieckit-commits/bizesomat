@@ -37,7 +37,7 @@ export function HowSection() {
             Jak działamy
           </div>
           <h2 className="font-serif text-white text-4xl lg:text-5xl tracking-tight">
-            4 kroki do Twojego automatu
+            4 kroki do Twojego biznesu
           </h2>
         </motion.div>
 
