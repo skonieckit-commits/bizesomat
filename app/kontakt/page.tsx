@@ -194,8 +194,8 @@ export default function KontaktPage() {
                 <a href="tel:606136613" className="flex items-center gap-2 text-[#0B1F3A] hover:text-[#C9A84C] transition-colors text-sm font-semibold">
                   <Phone size={16} className="text-[#C9A84C]" /> 606 13 66 13
                 </a>
-                <a href="mailto:tomasz@biznesomat.eu" className="flex items-center gap-2 text-[#0B1F3A] hover:text-[#C9A84C] transition-colors text-sm font-semibold">
-                  <Mail size={16} className="text-[#C9A84C]" /> tomasz@biznesomat.eu
+                <a href="mailto:biuro@biznesomat.eu" className="flex items-center gap-2 text-[#0B1F3A] hover:text-[#C9A84C] transition-colors text-sm font-semibold">
+                  <Mail size={16} className="text-[#C9A84C]" /> biuro@biznesomat.eu
                 </a>
               </div>
             </div>
