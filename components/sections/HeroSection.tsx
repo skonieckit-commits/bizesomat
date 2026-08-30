@@ -73,6 +73,7 @@ export function HeroSection() {
   const [videoOpen, setVideoOpen] = useState(false);
 
   return (
+    <>
     <section className="relative bg-[#0B1F3A] overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[600px] h-[500px] bg-[#C9A84C]/6 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4" />
@@ -293,5 +294,6 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
     )}
+    </>
   );
 }
