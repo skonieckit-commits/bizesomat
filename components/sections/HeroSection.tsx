@@ -70,6 +70,8 @@ function AnimatedChart() {
 }
 
 export function HeroSection() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <section className="relative bg-[#0B1F3A] overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -136,7 +138,7 @@ export function HeroSection() {
                 Rozpocznij darmową analizę <ArrowRight size={16} />
               </Link>
               <button
-                onClick={() => document.getElementById("jak-to-dziala")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => setVideoOpen(true)}
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold cursor-pointer"
                 style={{ border: "2px solid white", color: "white", backgroundColor: "rgba(255,255,255,0.12)" }}
               >
@@ -258,5 +260,38 @@ export function HeroSection() {
         </div>
       </div>
     </section>
+
+    {/* Modal z filmem */}
+    {videoOpen && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        style={{ backgroundColor: "rgba(0,0,0,0.85)" }}
+        onClick={() => setVideoOpen(false)}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.25 }}
+          className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl"
+          onClick={e => e.stopPropagation()}
+        >
+          <iframe
+            src="https://www.youtube.com/embed/1Uz5Ettgwck?autoplay=1"
+            className="w-full h-full"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          />
+          <button
+            onClick={() => setVideoOpen(false)}
+            className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center text-lg font-bold hover:bg-black transition-colors"
+          >
+            ✕
+          </button>
+        </motion.div>
+      </motion.div>
+    )}
   );
 }
